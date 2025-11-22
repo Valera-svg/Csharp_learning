@@ -1,0 +1,15 @@
+C:\Users\lerak\Csharp_learning\domashka\23.11\23.11\obj\Debug\net9.0\23.11.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lerak\Csharp_learning\domashka\23.11\23.11\obj\Debug\net9.0\23.11.AssemblyInfoInputs.cache
+C:\Users\lerak\Csharp_learning\domashka\23.11\23.11\obj\Debug\net9.0\23.11.AssemblyInfo.cs
+C:\Users\lerak\Csharp_learning\domashka\23.11\23.11\obj\Debug\net9.0\23.11.csproj.CoreCompileInputs.cache
+C:\Users\lerak\Csharp_learning\domashka\23.11\23.11\obj\Debug\net9.0\23.11.sourcelink.json
+C:\Users\lerak\Csharp_learning\domashka\23.11\23.11\bin\Debug\net9.0\23.11.exe
+C:\Users\lerak\Csharp_learning\domashka\23.11\23.11\bin\Debug\net9.0\23.11.deps.json
+C:\Users\lerak\Csharp_learning\domashka\23.11\23.11\bin\Debug\net9.0\23.11.runtimeconfig.json
+C:\Users\lerak\Csharp_learning\domashka\23.11\23.11\bin\Debug\net9.0\23.11.dll
+C:\Users\lerak\Csharp_learning\domashka\23.11\23.11\bin\Debug\net9.0\23.11.pdb
+C:\Users\lerak\Csharp_learning\domashka\23.11\23.11\obj\Debug\net9.0\23.11.dll
+C:\Users\lerak\Csharp_learning\domashka\23.11\23.11\obj\Debug\net9.0\refint\23.11.dll
+C:\Users\lerak\Csharp_learning\domashka\23.11\23.11\obj\Debug\net9.0\23.11.pdb
+C:\Users\lerak\Csharp_learning\domashka\23.11\23.11\obj\Debug\net9.0\23.11.genruntimeconfig.cache
+C:\Users\lerak\Csharp_learning\domashka\23.11\23.11\obj\Debug\net9.0\ref\23.11.dll

@@ -1,0 +1,24 @@
+﻿using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Вызов задач
+        Task1();
+        Task2();
+        Task3();
+        // ...
+    }
+    // =================== БЛОК 1. If...else ===================
+    // Tack 1
+    static void Task1()
+    {
+        int a = 10;
+        int b = 2;
+        if (a > b)
+            Console.WriteLine("True");
+        else
+            Console.WriteLine("False");
+    }
+
