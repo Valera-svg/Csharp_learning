@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\lerak\\Csharp_learning\\domashka\\23.11\\",
+  "WorkspaceRootPath": "C:\\Users\\jonni\\lera\\Csharp_learning\\domashka\\23.11\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B9CD2023-50FE-BFE5-ACAB-1A0EC832B11D}|23.11\\23.11.csproj|c:\\users\\lerak\\csharp_learning\\domashka\\23.11\\23.11\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B9CD2023-50FE-BFE5-ACAB-1A0EC832B11D}|23.11\\23.11.csproj|c:\\users\\jonni\\lera\\csharp_learning\\domashka\\23.11\\23.11\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B9CD2023-50FE-BFE5-ACAB-1A0EC832B11D}|23.11\\23.11.csproj|solutionrelative:23.11\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -24,11 +24,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\lerak\\Csharp_learning\\domashka\\23.11\\23.11\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\jonni\\lera\\Csharp_learning\\domashka\\23.11\\23.11\\Program.cs",
               "RelativeDocumentMoniker": "23.11\\Program.cs",
-              "ToolTip": "C:\\Users\\lerak\\Csharp_learning\\domashka\\23.11\\23.11\\Program.cs",
-              "RelativeToolTip": "23.11\\Program.cs",
-              "ViewState": "AgIAADMDAAAAAAAAAAAqwDUDAAAkAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\jonni\\lera\\Csharp_learning\\domashka\\23.11\\23.11\\Program.cs*",
+              "RelativeToolTip": "23.11\\Program.cs*",
+              "ViewState": "AgIAAAIBAAAAAAAAAAAiwBIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-21T15:13:13.319Z",
               "EditorCaption": ""

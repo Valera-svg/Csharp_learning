@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.Design;
+using System.Data;
 using System.Numerics;
 using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
@@ -47,14 +48,15 @@ class Program
         Task33();
         Task34();
         Task35();
-        Task36();*/
+        Task36();
         Task37();
-        /*Task39();
+        Task39();
         Task40();
         Task41();
         Task42();
         Task43();
         Task44();*/
+        Task45();
 
     }
     // =========================== БЛОК 1. Условия ============================
@@ -261,55 +263,23 @@ class Program
     static void Task12()
     {
         Console.WriteLine("Month number: ");
-        string month = (Console.ReadLine());
+        int month = int.Parse(Console.ReadLine());
 
-        if (month == "1")
+        if (month >= 3 & month <= 5)
         {
-            Console.WriteLine("January");
+            Console.WriteLine("Spring");
         }
-        else if (month == "2")
+        else if (month >= 6 & month <= 8)
         {
-            Console.WriteLine("February");
+            Console.WriteLine("Summer");
         }
-        else if (month == "3")
+        else if (month >= 9 & month <= 11)
         {
-            Console.WriteLine("March");
+            Console.WriteLine("Autumn");
         }
-        else if (month == "4")
+        else if (month == 12 || month == 1|| month == 2)
         {
-            Console.WriteLine("April");
-        }
-        else if (month == "5")
-        {
-            Console.WriteLine("May");
-        }
-        else if (month == "6")
-        {
-            Console.WriteLine("June");
-        }
-        else if (month == "7")
-        {
-            Console.WriteLine("July");
-        }
-        else if (month == "8")
-        {
-            Console.WriteLine("August");
-        }
-        else if (month == "9")
-        {
-            Console.WriteLine("September");
-        }
-        else if (month == "10")
-        {
-            Console.WriteLine("October");
-        }
-        else if (month == "11")
-        {
-            Console.WriteLine("November");
-        }
-        else if (month == "12")
-        {
-            Console.WriteLine("December");
+            Console.WriteLine("Winter");
         }
         else
         {
@@ -353,15 +323,6 @@ class Program
         Console.Write("Input 'ru' or 'en': ");
         string text = Console.ReadLine();
 
-        /*if (text == "ru")
-        {
-            Console.WriteLine("Брест");
-        }
-        else if (text == "en")
-        {
-            Console.WriteLine("Brest");                             // if...else
-        }*/
-
         switch (text)
         {
             case "en":
@@ -369,11 +330,11 @@ class Program
                 break;
             case "ru":
                 Console.WriteLine("Брест");
-                break;                                          // switch/case
+                break;                                            // switch/case
         }
 
-        /*string lang = (text == "en") ? "Brest" : "Брест";
-        Console.Write(lang);*/                                      // тернарная
+        string lang = (text == "en") ? "Brest" : "Брест";
+        Console.Write(lang);                                     // тернарная
     }
 
     // Используя тернарную операцию проверить, делится ли введенное с клавиатуры число на 8 без остатка.
@@ -388,11 +349,17 @@ class Program
     static void Task17()
     {
 
-        Console.WriteLine("Vvedite czetyroch znac'noe natural'noe czislo:");
-        string number = Console.ReadLine();
+        Console.WriteLine("Enter a four-digit natural number:");
+        int reversedNum = 0;
+        int temp = int.Parse(Console.ReadLine());                   // временная переменная, чятобы не менять исходное число
 
-        string reversed = new string(number.Reverse().ToArray());
-        Console.WriteLine($" Czislo: {reversed}");
+        while (temp > 0)
+        {
+            int digit = temp % 10;                                  // получаем последнюю цифру
+            reversedNum = reversedNum * 10 + digit;                 // добавляем цифру к перевернутому числу
+            temp = temp / 10;                                       // возвращаем исходное число, убираем последюю цифру
+        }
+        Console.WriteLine($" Number: {reversedNum}");
 
     }
 
@@ -400,7 +367,7 @@ class Program
 
     static void Task18()
     {
-        Console.WriteLine("Brat dai Chislo");
+        Console.WriteLine("Enter a four-digit natural number:");
         string number = Console.ReadLine();
         int amountOfSevenNumbers = 0;
 
@@ -427,14 +394,12 @@ class Program
 
     static void Task20()
     {
-        Console.WriteLine("Brat dai Chislo");
-        string number = Console.ReadLine();
-        int[] massive = number.Select(ch => -0).ToArray();
-
-        int a = number[0];
-        int b = number[1];
-        int c = number[2];
-        int d = number[3];
+        Console.WriteLine("Enter a four-digit natural number:");
+        int number = int.Parse(Console.ReadLine());
+        int a = number / 1000;
+        int b = (number / 100) % 10;
+        int c = (number / 10) % 10;
+        int d = number % 10;
 
         Console.WriteLine(((a + b) == (c + d)) ? true : false);
     }
@@ -443,36 +408,67 @@ class Program
 
     static void Task21()
     {
+        double number = 123.45601;
+        double fractional = number - Math.Floor(number);     
+        Console.WriteLine(fractional);                
 
-        Console.WriteLine("Brat dai Chislo");
-        string number = Console.ReadLine();
-        string fractional = number.Split('.', ',')[1];
-        Console.WriteLine(fractional);
+        bool hasZero = false;
 
-        foreach (char i in fractional)
+        for (int i = 0; i < 5; i++)                 // перебор с числа после точки
         {
-            if (i == '0')
+            fractional *= 10;
+            int digit = (int)Math.Floor(fractional); // извдлекаем двлбную часть
+
+            if (digit == 0)
             {
-                Console.WriteLine(true);
+                hasZero = true;
+                break;
             }
+
+            fractional -= digit;                       // оставляем только дробную часть дальше
         }
+
+             if (hasZero)
+            {
+                Console.WriteLine("True");
+            }
+            else
+            {
+                Console.WriteLine("False");
+            }
     }
 
     // Определить, есть ли среди первых четырех цифр дробной части заданного положительного вещественного числа, цифра 9.
 
     static void Task22()
     {
-        Console.WriteLine("Brat dai Chislo");
-        string number = Console.ReadLine();
-        string fractional = number.Split('.', ',')[0];
+        double number = 123.456091;
+        double fractional = number - Math.Floor(number);
         Console.WriteLine(fractional);
 
-        foreach (char i in fractional)
+        bool hasZero = false;
+
+        for (int i = 0; i < 4; i++)                 // перебор с числа после точки
         {
-            if (i == '9')
+            fractional *= 10;
+            int digit = (int)Math.Floor(fractional); // извдлекаем двлбную часть
+
+            if (digit == 9)
             {
-                Console.WriteLine(true);
+                hasZero = true;
+                break;
             }
+
+            fractional -= digit;                       // оставляем только дробную часть дальше
+        }
+
+        if (hasZero)
+        {
+            Console.WriteLine("True");
+        }
+        else
+        {
+            Console.WriteLine("False");
         }
     }
 
@@ -480,16 +476,20 @@ class Program
 
     static void Task23()
     {
-        Console.WriteLine("Brat dai Chislo");
-        string number = Console.ReadLine();
-        string fractional = number.Split('.', ',')[0];
-        Console.WriteLine(fractional);
-        int[] massive = number.Select(ch => -0).ToArray();
+        double num = 1.02302;
+        double fractional = num - Math.Floor(num);
 
-        int a = number[0];
-        int b = number[1];
-        int c = number[2];
-        int d = number[3];
+        int a = (int)(fractional * 10);           // умножили на 10 → взяли целую часть 2.3425
+        fractional = fractional * 10 - a;         // убрали целую часть (2.3425 - 2 = 0.3425)
+
+        int b = (int)(fractional * 10);           // умножили на 10 → взяли целую часть 3.425
+        fractional = fractional * 10 - b;         // убрали целую часть (3.425 - 3 = 0.425)
+
+        int c = (int)(fractional * 10);   
+        fractional = fractional * 10 - c;
+
+        int d = (int)(fractional * 10);
+        fractional = fractional * 10 - d;
 
         Console.WriteLine((a == d) ? true : false);
     }
@@ -502,7 +502,7 @@ class Program
         int y = 2;
         int z = 2;
 
-        Console.WriteLine((x = y) == (y = z) ? true : false);
+        Console.WriteLine((x == y) == (y == z) ? true : false);
     }
 
     // Присвоить логической переменной значение логического выражения, истинного при выполнении следующего условия и ложного в противном случае:только одно из целых чисел x, y, z положительно;  
@@ -510,10 +510,12 @@ class Program
     static void Task25()
     {
         int x = 2;
-        int y = 2;
-        int z = 7;
+        int y = 5;
+        int z = 2;
 
-        Console.WriteLine((x % 2 == 0) ^ (y % 2 == 0) ^ (z % 2 == 0));
+        bool result = (x > 0 ? 1 : 0) + (y > 0 ? 1 : 0) + (z > 0 ? 1 : 0) == 1;
+
+        Console.WriteLine(result); 
 
     }
 
@@ -525,36 +527,52 @@ class Program
         Console.Write(" Visokosnyj li god: ");
         int y = int.Parse(Console.ReadLine());
 
-        Console.WriteLine(((x - y) % 2 == 0) ? "da" : "net");
+        Console.WriteLine(((x - y) % 4 == 0) ? "da" : "net");
     }
 
-    // Даны действительные числа x, y, z. Поменять значения переменных так, чтобы x < y < z; 
+    // Даны действительные числа x, y, z. Поменять значения переменных так, чтобы x < y < z; Выполнить задание двумя способами: с использованием оператора if и с использованием условного оператора 
 
     static void Task27()
     {
         int x = 5;
-        int y = 10;
-        int z = 15;
+        int y = 20;
+        int z = 1;
 
-        if (x > y) { int i = y; y = x; x = i; }
+        /*if (x > y) { int i = y; y = x; x = i; }
         if (y > z) { int i = z; z = y; y = i; }
-        if (z < x) { int i = x; x = z; z = i; }
+        if (x > y) { int i = y; y = x; x = i; }*/
+
+        (x, y) = x > y ? (y, x) : (x, y);                // Сортировка через тернарный оператор и кортежи
+        (y, z) = y > z ? (z, y) : (y, z);
+        (x, y) = x > y ? (y, x) : (x, y);
+
+        Console.WriteLine($"x = {x} < y = {y} < z = {z}");
 
     }
 
-    // Даны вещественные x1, x2, x3, x4. Поменять значения переменных так, чтобы x1 < x3 < x2 < x4 .
+    // Даны вещественные x1, x2, x3, x4. Поменять значения переменных так, чтобы x1 < x3 < x2 < x4 . Выполнить задание двумя способами: с использованием оператора if и с использованием условного оператора 
 
     static void Task28()
     {
-        double x1 = 1.1;
-        double x2 = 2.2;
+        double x1 = 4.4;
         double x3 = 3.3;
-        double x4 = 4.4; // проверяем x1 < x3 < x2 < x4
+        double x2 = 2.2;
+        double x4 = 1.1;
 
-        if (x1 > x3) { double x5 = x3; x3 = x1; x1 = x5; }
+        /*if (x1 > x3) { double x5 = x3; x3 = x1; x1 = x5; }
         if (x3 > x2) { double x5 = x2; x2 = x3; x3 = x5; }
         if (x2 > x4) { double x5 = x4; x4 = x2; x2 = x5; }
-        if (x4 < x1) { double x5 = x1; x1 = x4; x4 = x5; }
+        if (x1 > x3) { double x5 = x3; x3 = x1; x1 = x5; }
+        if (x3 > x2) { double x5 = x2; x2 = x3; x3 = x5; }*/
+
+        (x1, x3) = x1 > x3 ? (x3, x1) : (x1, x3);          // Сортировка через тернарный оператор и кортежи
+        (x3, x2) = x3 > x2 ? (x2, x3) : (x3, x2);
+        (x2, x4) = x2 > x4 ? (x4, x2) : (x2, x4);
+        (x1, x3) = x1 > x3 ? (x3, x1) : (x1, x3);
+        (x3, x2) = x3 > x2 ? (x2, x3) : (x3, x2);
+        (x1, x3) = x1 > x3 ? (x3, x1) : (x1, x3);
+
+        Console.WriteLine($"x1 = {x1} < x3 = {x3} < x2 = {x2} < x4 = {x4}");
     }
 
     // Решите эти задачи сначала через цикл while, а затем через цикл for. Выведите столбец чисел от 1 до 50.
@@ -573,53 +591,72 @@ class Program
         }
     }
 
-    //  Напишите программу, которая считает сумму первых 10 натуральных чисел.
+    //  Напишите программу, которая считает сумму первых 10 натуральных чисел. через while, через цикл for.
 
     static void Task30()
     {
         int number = 1;
         int sum = 0;
 
-        while (number <= 10)
+        for (int i = 0; i < 10; i++)
         {
             sum += number;
             number++;
         }
+
+        /*while (number <= 10)
+        {
+            sum += number;
+            number++;
+        }*/
+
         Console.WriteLine(sum);
     }
 
-    //  Дано число n=1000. Делите его на 2 столько раз, пока результат деления не станет меньше 50. Какое число получится? Посчитайте количество итераций, необходимых для этого(итерация - это проход цикла).
+    //  Дано число n=1000. Делите его на 2 столько раз, пока результат деления не станет меньше 50. Какое число получится? Посчитайте количество итераций, необходимых для этого(итерация - это проход цикла). через while, через цикл for.
 
     static void Task31()
     {
         int n = 1000;
+        int sum = 0;
 
-        /*while (n >= 50)
+        /*for (n = 1000; n >= 50; n++)
         {
             n = n / 2;
             Console.WriteLine(n);
+            sum++;
         }*/
-        for (n = 1000; n >= 50; n++)
+
+        while(n >= 50)
         {
             n = n / 2;
             Console.WriteLine(n);
+            sum++;
         }
-
+        Console.WriteLine($"The number of iterations: {sum}");
 
     }
 
-    // Пользователь вводит число. Выведите n строк, добавляя следующее натуральное число на каждой строке.
+    // Пользователь вводит число. Выведите n строк, добавляя следующее натуральное число на каждой строке. через while, через цикл for.
 
     static void Task32()
     {
         Console.WriteLine("Insert the number.");
         int UserNumber = int.Parse(Console.ReadLine());
         string previous = "";
+        int j = 1;
 
-        for (int i = 1; i <= UserNumber; i++)
+        /*for (int i = 1; i <= UserNumber; i++)
         {
             previous = previous + i;
             Console.WriteLine(previous);
+        }*/
+
+        while (j <= UserNumber)
+        {
+            previous = previous + j;
+            Console.WriteLine(previous);
+            j++;
         }
     }
 
@@ -639,61 +676,58 @@ class Program
     {
         while (true)
         {
-            Console.WriteLine("=================== KALkulaTOR ======================== \nVyberite operaciju dla dvuch cisel, vvedia sootvetstvyusij nomer. \nSlozenie - vvedite 1 \nVycitanie - vvedite 2 \nUmnozenie - vvedite 3 \nDelenie - vvedite 4 \nVyjyi - vvedite 5");
+            Console.WriteLine("=================== KALkulaTOR ======================== \nChoose an operation for two numbers by entering the corresponding number: \nAddition – enter 1 \nSubtraction – enter 2 \nMultiplication – enter 3 \nDivision – enter 4 \nExit – enter 5");
             string nomerOperacii = Console.ReadLine();
 
             if (nomerOperacii == "1")
             {
-                Console.Write("\nOperacija clozenia. \n===== a + b ======= \nVvedite slogaemye: \na = ");
+                Console.Write("\nAddition. \n===== a + b ======= \nEnter the addends: \na = ");
                 int a = int.Parse(Console.ReadLine());
                 Console.Write("b = ");
                 int b = int.Parse(Console.ReadLine());
                 int c = a + b;
-                Console.WriteLine($"Resultat: {a} + {b} = {c} \nVevite luboe znacenie, ctoby prodolzit'");
-                string navigacia = Console.ReadLine();
+                Console.WriteLine($"Result: {a} + {b} = {c}");
                 continue;
             }
             else if (nomerOperacii == "2")
             {
-                Console.Write("\nOperacija vycitania. \n===== a - b ======= \nVvedite vycitaemye: \na = ");
+                Console.Write("\nSubstraction. \n===== a - b ======= \nEnter the subtrahends: \na = ");
                 int a = int.Parse(Console.ReadLine());
                 Console.Write("b = ");
                 int b = int.Parse(Console.ReadLine());
                 int c = a - b;
-                Console.WriteLine($"Resultat: {a} - {b} = {c} \nVevite luboe znacenie, ctoby prodolzit'");
-                string navigacia = Console.ReadLine();
+                Console.WriteLine($"Result: {a} - {b} = {c}");
                 continue;
             }
             else if (nomerOperacii == "3")
             {
-                Console.Write("\nOperacija umnizenia. \n===== a * b ======= \nVvedite mnoziteli: \na = ");
+                Console.Write("\nMultiplication. \n===== a * b ======= \nEnter the factors: \na = ");
                 int a = int.Parse(Console.ReadLine());
                 Console.Write("b = ");
                 int b = int.Parse(Console.ReadLine());
                 int c = a * b;
-                Console.WriteLine($"Resultat: {a} * {b} = {c} \nVevite luboe znacenie, ctoby prodolzit'");
-                string navigacia = Console.ReadLine();
+                Console.WriteLine($"Result: {a} * {b} = {c}");
                 continue;
             }
             else if (nomerOperacii == "4")
             {
-                Console.Write("\nOperacija delenia. \n===== a / b ======= \nVvedite chisla: \na = ");
+                Console.Write("\nDivision. \n===== a / b ======= \nEnter the numbers: \na = ");
                 int a = int.Parse(Console.ReadLine());
                 Console.Write("b = ");
                 int b = int.Parse(Console.ReadLine());
-                var c = a / b;
-                Console.WriteLine($"Resultat: {a} / {b} = {c} \nVevite luboe znacenie, ctoby prodolzit'");
-                string navigacia = Console.ReadLine();
+                if (b == 0) { Console.WriteLine("You cannot divide by zero"); continue; }
+                double c = (double)a / (double)b;
+                Console.WriteLine($"Resultat: {a} / {b} = {c}");
                 continue;
             }
             else if (nomerOperacii == "5")
             {
-                Console.WriteLine("Do swidania!");
+                Console.WriteLine("Bye-bye!");
                 break;
             }
             else
             {
-                Console.WriteLine("Poprobujte ese raz.");
+                Console.WriteLine("Please enter the number:");
                 continue;
             }
         }
@@ -747,41 +781,32 @@ class Program
     // 1. Вывести все чётные числа массива в одну строку через пробел.
     // 2. Посчитать среднее арифметическое всех чётных элементов.
     // 3. Если чётных нет — вывести сообщение "Нет чётных чисел".
-    //   Console.WriteLine("Insert the number.");
-    /*int UserNumber = int.Parse(Console.ReadLine());
-    string previous = "";
-
-       for (int i = 1; i <= UserNumber; i++)
-        {
-            current = previous + i;
-            Console.WriteLine(previous);
-            previous = cuttenr;
-            
-        }*/
 
     static void Task35()
     {
         int[] nums = new int[10] { 91, 12, 53, 44, 509, 63, 72, 80, 96, 103 };
-        int x = 0;
-        int previous = 0;
         int sum = 0;
+        int count = 0;
 
         for (int i = 0; i < nums.Length; i++)
         {
             if (nums[i] % 2 == 0)
             {
                 Console.Write($"{nums[i]} ");
-                x++;                                       // считай, сколько i вышло
-                previous = previous + nums[i];
-            }
-            else if (sum == 0)
-            {
-                Console.WriteLine("No even numbers.");
+                count++;                                       // считай, сколько i вышло
+                sum = sum + nums[i];
             }
         }
 
-        double average = (double)sum / x;
-        Console.WriteLine($"\nThe average is: {average}");
+        if (count == 0)
+        {
+            Console.WriteLine("No even numbers.");
+        }
+        else
+        {
+            double average = (double)sum / count;
+            Console.WriteLine($"\nThe average is: {average}");
+        }
     }
 
     // Дан массив строк (например, имена, слова и т.п.).
@@ -843,44 +868,6 @@ class Program
         {
             Console.Write(x + " "); 
         }
-        
-        
-        
-        /*for (int i = 0; i < nums.Length; i++)
-        {
-            if (nums[i] > nums.Length)                                                                   // чтобы индексы, которые больше длины массива, переносились вначало массива
-            {
-                nums[i] -= nums.Length;
-            }
-
-            temp = nums[i];
-            nums[i] = nums[i + n];
-            nums[i + n] = temp;
-            Console.Write($"{nums[i]} ");
-
-        }
-
-        foreach (int z in nums)                                                                          // выводит новый массив
-        {
-            Console.WriteLine($"{z} \t");
-
-        }*/
-
-
-        /* TRY 1ST
-         * int n = nums.Length;
-        int k = n / 2;                                        // середина массива
-        int temp;
-
-            for (int i = 0; i<nums.Length; i++)
-            {
-                nums[i] = nums[i]* 2;
-
-                temp = nums[i];
-                nums[i] = nums[n - k];
-                nums[n - k] = temp;
-                k = k - 2;
-            }*/
     }
 
     // Дан массив строк и одна отдельная строка pattern.
@@ -899,18 +886,18 @@ class Program
             "MamiError",
             "Elena",
             "Sidney",
-            "Ilya",
+            "ErrorIlya",
             "TemaError"
         };
         string pattern = "Error";
         int x = 0;
 
-        for (int i = 0; i <= names.Length; i++)
+        foreach (string s in names)
         {
 
-            if (names[i].EndsWith(pattern))
+            if (s.Contains(pattern))
             {
-                Console.WriteLine(i);
+                Console.Write(s + " ");
                 x++;
             }
 
@@ -930,25 +917,38 @@ class Program
     static void Task39()
     {
         int[] numbers = new int[10] { 1232, 9345, 8247, 2349, 3935, 7623, 24927, 1232, 9345, 1232 };
-        int[] result = new int[10];
+        int[] uniqDigits  = new int[numbers.Length];                             // массив для хранения уникальных первых цифр чисел.
+        int uniqCount = 0;                                                       // cчётчик, сколько уникальных цифр мы нашли
 
-        for (int i = 0; i < numbers.Length; i++)
+        for (int i = 0;  i < numbers.Length; i++)
         {
-            string number = numbers[i].ToString();             //  переводим первое число в строку  
-            char first = number[0];                            // забираем только первый элемент строки
-            numbers[i] = int.Parse(first.ToString());          // переводим опять в число
-            result[i] = numbers[i];                            // записываем результат в новый массив
-            Console.Write($"{result[i]} \t");
-
-            /*for (int j = 0; j < result.Length; j++)
+            int first = numbers[i];
+            while (first >= 10)
             {
-                if (result[j] == numbers[i])
+                first /= 10;                                                     // делим на 10, пока не останется одна цифра
+            }
+
+            bool alreadyExists = false;
+            for (int j = 0; j < uniqCount; j++)                                  // проверяем, встречалась ли эта цифра раньше. только по реально добавленным элементам
+            {
+                if (uniqDigits[j] == first)
                 {
-                    result = result.Where(x => !numbers.Contains(x)).ToArray();
-                    Console.Write($"{result[i]} \t");
+                    alreadyExists = true;
+                    break;
                 }
-            }*/
-            
+            }
+            if (!alreadyExists)                                              // если цифра встречается впервые, добавляем её в массив уникальных цифр
+            {
+                uniqDigits[uniqCount] = first;
+                uniqCount++;
+            }
+
+        }
+        int[] result = new int[uniqCount];                                       //  создаём массив точно нужного размера
+        for (int i =0; i<result.Length; i++)
+        {
+            result[i] = uniqDigits[i];
+            Console.WriteLine(result[i]);
         }
     }
 
@@ -960,26 +960,22 @@ class Program
     // Пример:
     // ["cat", "hello"] → ["tac", "olleh"]
 
-    static void Task40()
+    static void Task45()
     {
+
         string[] names = new string[] { "cat", "hello" };
-        int n = names.Length;
-        char[] inverted = new char[n];
-        string s = "";
+        string[] reversed = new string[names.Length];
 
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < names.Length; i++)
         {
-            /*inverted[i] = names[n - i - 1];         // читаем с конца и пишем с начала
-            Console.WriteLine(string.Join(" ", inverted));*/
-            s = s + names[i].ToString();                  // запиываем значение элемента в строку, присоединяя к предыдущему значению
-            inverted = s.ToCharArray();               // переводим в символы
-            Array.Reverse(inverted);                  // разворачиваем символы наоборот
-
+            char[] chars = names[i].ToCharArray();           // превращаем строку в массив символов
+            Array.Reverse(chars);                            // переворачиваем массив символов
+            reversed[i] = new string(chars);                 // записываем в новый массив
         }
 
-        foreach (char i in inverted)
+        foreach (string s in reversed)
         {
-            Console.Write(i);
+            Console.Write(s + " ");
         }
 
     }
@@ -1058,67 +1054,6 @@ class Program
                 Console.WriteLine($"{num[i]} - {counter} times.");
             }   
         }
-
-
-        /* TRY 1ST
-         * for (int i = 0; i < num.Length; i++)                         // цикл который перебирает первое число для сравнения
-        {
-            for (int j = 0; j < num.Length; j++)                     // цикл который перебирает второе число для сравнения
-            {
-                if (i == j) continue;                                // чтобы не сравнивать число само с собой (смотрит по совпадению индекса)
-
-                if (num[i] == num[j])                                // если значения одинкавые
-                {
-                    counter++;
-                    for (int z = 0; z < store.Length; z++)           // перебираем массив для записи и проверяем нет ли уже такого значения
-                    {
-                        if (store[z] == num[i]) break;               // если есть то цикл прерывается
-                        else                                         // если такого значения еще нет, то...
-                        {
-                            Array.Resize(ref store, store.Length + 1);                  // увеличиваем массив для хранения на 1
-                            store[store.Length - 1] = num[i];                           // записываем туда значение совпавшего числа
-                            Console.WriteLine($"{store[store.Length - 1]} - {counter} times.");        // выводим в консоль значение текущего элемента и количесво из счетчика
-                        }
-                    }
-                }
-            }
-        }*/
-
-        /* TRY 2ND
-         * for (int i = 0; i < num.Length; i++)
-        {
-            int y = 1;                                     // счетчик сбрасывается до 1, когда цикл проверяет новое число в массиве
-            
-
-            for (int x = 0; x < num.Length; x++)           // цикл, который выбирает второе число для сравнения (оно всегда больше исходного на 1, т.е. следующее)
-            {
-                string n = "";
-
-                if (num[i] == num[x])
-                {
-                    n = num[i].ToString();                                  // пусть будет строкой, которой присваивается значение элемента в массиве
-                    y++;                                        // кол во раз выводит правильно
-                    Console.WriteLine($"{n} - {y} times.");
-                
-                }
-            }
-
-        }*/
-
-        /* TRY 3RD
-         * for (int i = 0; i < num.Length; i++)
-        {
-            for (int x = 0; x < num.Length; x++)
-            {
-                if (i == x) continue;                   // чтобы не сравнивать число само с собой
-
-                if (num[1] == num[x])
-                {
-                    y++;
-                    Console.WriteLine($"{num[i]} - {y} times.");
-                }
-            }
-        }*/
     }
 
     // Проверить, что в массиве нет двух соседних одинаковых чисел
